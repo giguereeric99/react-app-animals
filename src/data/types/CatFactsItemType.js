@@ -8,23 +8,18 @@
  */
 
 import {
-  GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType,
+  GraphQLString as StringType,
+  GraphQLNonNull as NonNull,
 } from 'graphql';
 
-import me from './queries/me';
-import news from './queries/news';
-import catfacts from './queries/catfacts';
-
-const schema = new Schema({
-  query: new ObjectType({
-    name: 'Query',
-    fields: {
-      me,
-      news,
-      catfacts,
-    },
-  }),
+const CatFactsItemType = new ObjectType({
+  name: 'CatFactItem',
+  fields: {
+    _id: { type: new NonNull(StringType) },
+    type: { type: new NonNull(StringType) },
+    text: { type: new NonNull(StringType) },
+  },
 });
 
-export default schema;
+export default CatFactsItemType;
