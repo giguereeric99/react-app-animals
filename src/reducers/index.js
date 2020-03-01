@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import user from './user';
+import catfacts from './catfacts'
 import runtime from './runtime';
 
 export default combineReducers({
-  user,
+  catfacts,
   runtime,
 });
