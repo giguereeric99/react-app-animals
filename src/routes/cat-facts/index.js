@@ -10,6 +10,7 @@
 import React from 'react';
 import CatFacts from './CatFActs';
 import Layout from '../../components/Layout';
+import InfoAPI from '../../components/InfoAPI';
 
 async function action({ fetch }) {
   const resp = await fetch('/graphql', {
@@ -26,11 +27,18 @@ async function action({ fetch }) {
 
   const { data } = await resp.json();
   if (!data || !data.catfacts) throw new Error('Failed to load the api cat facts.');
-  return {
+
+  const infos = {
     title: 'Cat Facts',
+    url: 'https://cat-fact.herokuapp.com/facts/random?animal_type=cat&amount=10'
+  }
+  
+  return {
+    infos,
     chunks: ['cat-facts'],
     component: (
       <Layout>
+        <InfoAPI infos={infos} />
         <CatFacts catfacts={data.catfacts} />
       </Layout>
     ),

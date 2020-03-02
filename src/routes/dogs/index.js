@@ -10,6 +10,7 @@
 import React from 'react';
 import Dogs from './Dogs';
 import Layout from '../../components/Layout';
+import InfoAPI from '../../components/InfoAPI';
 
 async function action({ fetch }) {
   const resp = await fetch('/graphql', {
@@ -25,13 +26,19 @@ async function action({ fetch }) {
   });
 
   const { data } = await resp.json();
-  console.log(data)
   if (!data || !data.dogs) throw new Error('Failed to load the api dogs.');
+
+  const infos = {
+    title: 'Dog API',
+    url: 'https://dog.ceo/api/breeds/image/random'
+  }
+
   return {
-    title: 'Dog',
+    infos,
     chunks: ['dogs'],
     component: (
       <Layout>
+        <InfoAPI infos={infos} />
         <Dogs dog={data.dogs} />
       </Layout>
     ),
