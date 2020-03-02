@@ -20,6 +20,9 @@ export default function Navigation() {
       <Link className={s.link} to="/cat-facts">
         Cat Facts
       </Link>
+      <Link className={s.link} to="/dogs">
+        Dogs
+      </Link>
     </div>
   );
 }

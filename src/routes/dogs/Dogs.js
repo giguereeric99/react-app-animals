@@ -10,24 +10,26 @@
 import useStyles from 'isomorphic-style-loader/useStyles';
 import React from 'react';
 import PropTypes from 'prop-types';
+import s from './Dogs.css';
 
-// external-global styles must be imported in your JS.
-import normalizeCss from 'normalize.css';
-import s from './Layout.css';
-import Header from '../Header';
-import Footer from '../Footer';
-
-export default function Layout({ children }) {
-  useStyles(s, normalizeCss);
+export default function Dogs({ dog }) {
+  useStyles(s);
   return (
-    <>
-      <Header />
-      {children}
-      <Footer />
-    </>
+    <div className={s.root}>
+      <div className={s.container}>
+        <div className={s.image}>
+          <img
+            src={dog.message}
+            alt="Dog image"
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+Dogs.propTypes = {
+  dog: PropTypes.shape({
+    message: PropTypes.string.isRequired
+  }),
 };
