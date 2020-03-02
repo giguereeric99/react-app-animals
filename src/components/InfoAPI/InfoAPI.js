@@ -9,26 +9,21 @@
 
 import useStyles from 'isomorphic-style-loader/useStyles';
 import React from 'react';
-import s from './Feedback.css';
+import s from './InfoAPI.css';
+import { Jumbotron } from 'react-bootstrap';
 
-export default function Feedback() {
+export default function InfoAPI({ infos }) {
   useStyles(s);
+
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <a
-          className={s.link}
-          href="https://gitter.im/kriasoft/react-starter-kit"
-        >
-          Ask a question
-        </a>
-        <span className={s.spacer}>|</span>
-        <a
-          className={s.link}
-          href="https://github.com/kriasoft/react-starter-kit/issues/new"
-        >
-          Report an issue
-        </a>
+        <Jumbotron>
+          <h1>{ infos.title }</h1>
+          <p>
+            { infos.url }
+          </p>
+        </Jumbotron>
       </div>
     </div>
   );
