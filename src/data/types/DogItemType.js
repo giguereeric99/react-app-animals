@@ -8,25 +8,19 @@
  */
 
 import {
-  GraphQLSchema as Schema,
   GraphQLObjectType as ObjectType,
+  GraphQLString as StringType,
+  GraphQLNonNull as NonNull,
 } from 'graphql';
 
-import me from './queries/me';
-import news from './queries/news';
-import catfacts from './queries/catfacts';
-import dogs from './queries/dogs';
-
-const schema = new Schema({
-  query: new ObjectType({
-    name: 'Query',
-    fields: {
-      me,
-      news,
-      catfacts,
-      dogs,
+const DogItemType = new ObjectType({
+  name: 'DogItem',
+  fields: {
+    message: { 
+      type: new NonNull(StringType),
+      resolve: (root) => root.message 
     },
-  }),
+  },
 });
 
-export default schema;
+export default DogItemType;

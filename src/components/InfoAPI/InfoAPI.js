@@ -9,15 +9,21 @@
 
 import useStyles from 'isomorphic-style-loader/useStyles';
 import React from 'react';
-import s from './Footer.css';
+import s from './InfoAPI.css';
+import { Jumbotron } from 'react-bootstrap';
 
-export default function Footer() {
+export default function InfoAPI({ infos }) {
   useStyles(s);
 
   return (
     <div className={s.root}>
       <div className={s.container}>
-        <span className={s.text}>© EG</span>
+        <Jumbotron>
+          <h1>{ infos.title }</h1>
+          <p>
+            { infos.url }
+          </p>
+        </Jumbotron>
       </div>
     </div>
   );
