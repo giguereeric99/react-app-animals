@@ -39,7 +39,7 @@ async function action({ fetch }) {
     component: (
       <Layout>
         <InfoAPI infos={infos} />
-        <CatFacts catfacts={data.catfacts} />
+        <CatFacts title={infos.title} catfacts={data.catfacts} />
       </Layout>
     ),
   };
